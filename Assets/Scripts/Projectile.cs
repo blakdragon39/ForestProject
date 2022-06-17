@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour {
@@ -8,6 +9,10 @@ public class Projectile : MonoBehaviour {
 
     private void Awake() {
         rigidbody = GetComponent<Rigidbody2D>();
+    }
+
+    private void OnTriggerEnter2D(Collider2D col) {
+        Destroy(gameObject);
     }
 
     public void Fire(Vector3 from, Vector3 towards) {
