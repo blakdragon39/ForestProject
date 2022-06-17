@@ -5,9 +5,8 @@ enum EnemyState {
     Attacking
 }
 
-public class Enemy : MonoBehaviour {
-
-    [SerializeField] private int health;
+public class Enemy : MonoBehaviour, Killable {
+    
     [SerializeField] private Vector3 patrolPosStart;
     [SerializeField] private Vector3 patrolPosEnd;
     [SerializeField] private float moveSpeed;
@@ -18,13 +17,13 @@ public class Enemy : MonoBehaviour {
     private new Rigidbody2D rigidbody;
     private Animator animator;
     private Transform target;
-    
-    private readonly int directionHash = Animator.StringToHash("direction");
-    private readonly int isMovingHash = Animator.StringToHash("isMoving");
-    
+
     private EnemyState currentState;
     private Vector3 patrolTarget;
     private float timeSinceLastAttack;
+    
+    private readonly int directionHash = Animator.StringToHash("direction");
+    private readonly int isMovingHash = Animator.StringToHash("isMoving");
 
     private void Awake() {
         rigidbody = GetComponent<Rigidbody2D>();
@@ -79,6 +78,10 @@ public class Enemy : MonoBehaviour {
     
     private void FireAttack() {
         var ball = Instantiate(projectile, transform.position, Quaternion.identity);
-        ball.Fire(transform.position, target.position);
+        ball.Fire(transform.position, target.position, gameObject.layer);
+    }
+
+    public void Die() {
+        Destroy(gameObject);
     }
 }

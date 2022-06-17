@@ -1,8 +1,8 @@
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 
-public class PlayerController : MonoBehaviour {
-    
+public class PlayerController : MonoBehaviour, Killable {
+
     [SerializeField] private float moveSpeed;
     
     private Rigidbody2D rigidBody;
@@ -45,5 +45,9 @@ public class PlayerController : MonoBehaviour {
 
     private void Move() {
         rigidBody.MovePosition((Vector2) transform.position + input * moveSpeed * Time.deltaTime);
+    }
+
+    public void Die() {
+        Debug.Log("Dead :(");
     }
 }

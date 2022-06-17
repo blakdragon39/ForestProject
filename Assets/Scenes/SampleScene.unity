@@ -143,6 +143,7 @@ GameObject:
   - component: {fileID: 64511702}
   - component: {fileID: 64511699}
   - component: {fileID: 64511696}
+  - component: {fileID: 64511703}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -222,7 +223,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 64511695}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.79, y: 7.42, z: 0}
+  m_LocalPosition: {x: -3.37, y: 0.89, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 519420032}
@@ -308,6 +309,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &64511703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64511695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e0bd811b71640ba88899afa9e1a0eef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
 --- !u!1 &87791514
 GameObject:
   m_ObjectHideFlags: 0
@@ -20271,12 +20285,20 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2090736486128804400, guid: b614df4e02dad034d965532c1247c543, type: 3}
+      propertyPath: attackRadius
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090736486128804400, guid: b614df4e02dad034d965532c1247c543, type: 3}
       propertyPath: patrolPosEnd.x
       value: -16.5
       objectReference: {fileID: 0}
     - target: {fileID: 2090736486128804400, guid: b614df4e02dad034d965532c1247c543, type: 3}
       propertyPath: patrolPosEnd.y
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090736486128804400, guid: b614df4e02dad034d965532c1247c543, type: 3}
+      propertyPath: attacksPerSecond
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2090736486128804400, guid: b614df4e02dad034d965532c1247c543, type: 3}
       propertyPath: patrolPosStart.x

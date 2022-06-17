@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 5174211278631663054}
   - component: {fileID: 5174211278631663055}
   - component: {fileID: 2090736486128804400}
+  - component: {fileID: 4622073070566539242}
+  - component: {fileID: 5666628765610349863}
   m_Layer: 7
   m_Name: PoisonDrake
   m_TagString: Untagged
@@ -137,9 +139,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60afbe801705f0542a7dd67f432ef3ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
   patrolPosStart: {x: 0, y: 0, z: 0}
   patrolPosEnd: {x: 0, y: 0, z: 0}
   moveSpeed: 0
   attackRadius: 0
+  attacksPerSecond: 0
   projectile: {fileID: 1203056510790491061, guid: d0c5a0398969aec44bd96715702c12a6, type: 3}
+--- !u!114 &4622073070566539242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5174211278631663052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e0bd811b71640ba88899afa9e1a0eef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 2
+--- !u!61 &5666628765610349863
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5174211278631663052}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0020637512, y: 0.029927969}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.9958725, y: 0.94014406}
+  m_EdgeRadius: 0

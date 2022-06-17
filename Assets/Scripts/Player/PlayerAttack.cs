@@ -13,6 +13,6 @@ public class PlayerAttack : MonoBehaviour {
     private void FireAttack() {
         var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         var ball = Instantiate(projectile, transform.position, Quaternion.identity);
-        ball.Fire(transform.position, mousePos);
+        ball.Fire(transform.position, mousePos, gameObject.layer);
     }
 }
