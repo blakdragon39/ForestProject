@@ -144,6 +144,7 @@ GameObject:
   - component: {fileID: 64511699}
   - component: {fileID: 64511696}
   - component: {fileID: 64511703}
+  - component: {fileID: 64511704}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -223,7 +224,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 64511695}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.37, y: 0.89, z: 0}
+  m_LocalPosition: {x: 2, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 519420032}
@@ -242,6 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82176940f50746d0b2b0849c6d5ebaca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPos: {x: 2, y: -1, z: 0}
   moveSpeed: 5
 --- !u!50 &64511700
 Rigidbody2D:
@@ -322,6 +324,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
+--- !u!61 &64511704
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64511695}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.056219816, y: 0.47501338}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 0.24, y: 0.24}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.55024195, y: 0.875067}
+  m_EdgeRadius: 0
 --- !u!1 &87791514
 GameObject:
   m_ObjectHideFlags: 0
@@ -20355,6 +20383,14 @@ PrefabInstance:
     - target: {fileID: 5174211278631663052, guid: b614df4e02dad034d965532c1247c543, type: 3}
       propertyPath: m_Name
       value: PoisonDrake
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666628765610349863, guid: b614df4e02dad034d965532c1247c543, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666628765610349863, guid: b614df4e02dad034d965532c1247c543, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b614df4e02dad034d965532c1247c543, type: 3}
