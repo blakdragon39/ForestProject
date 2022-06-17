@@ -3,10 +3,12 @@ using Vector2 = UnityEngine.Vector2;
 
 public class PlayerController : MonoBehaviour, Killable {
 
+    [SerializeField] private Vector3 spawnPos;
     [SerializeField] private float moveSpeed;
     
     private Rigidbody2D rigidBody;
     private Animator animator;
+    private Damageable damageable;
 
     private Vector2 input;
     private Vector2 lastInput;
@@ -17,6 +19,7 @@ public class PlayerController : MonoBehaviour, Killable {
     private void Awake() {
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        damageable = GetComponent<Damageable>();
     }
 
     private void Update() {
@@ -48,6 +51,7 @@ public class PlayerController : MonoBehaviour, Killable {
     }
 
     public void Die() {
-        Debug.Log("Dead :(");
+        damageable.Revive();
+        transform.position = spawnPos;
     }
 }
