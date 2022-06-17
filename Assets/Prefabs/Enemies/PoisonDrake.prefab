@@ -138,5 +138,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  patrolPosStart: {x: 0, y: 0}
-  patrolPosEnd: {x: 0, y: 0}
+  patrolPosStart: {x: 0, y: 0, z: 0}
+  patrolPosEnd: {x: 0, y: 0, z: 0}
+  moveSpeed: 0
+  attackRadius: 0
+  projectile: {fileID: 1203056510790491061, guid: d0c5a0398969aec44bd96715702c12a6, type: 3}

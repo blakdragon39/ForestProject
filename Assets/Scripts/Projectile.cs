@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour {
@@ -12,7 +11,7 @@ public class Projectile : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D col) {
-        Destroy(gameObject);
+        Destroy(gameObject); //todo hit target
     }
 
     public void Fire(Vector3 from, Vector3 towards) {
