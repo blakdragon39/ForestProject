@@ -6,7 +6,7 @@ public class Damageable : MonoBehaviour {
     [SerializeField] private int maxHealth;
 
     private Killable killable;
-    private SpriteRenderer renderer;
+    private new SpriteRenderer renderer;
     
     private int currentHealth;
     

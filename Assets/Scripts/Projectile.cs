@@ -13,7 +13,7 @@ public class Projectile : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D col) {
-        var damageable = col.gameObject.GetComponent<Damageable>();
+        var damageable = col.gameObject.GetComponentInParent<Damageable>();
         if (damageable != null && gameObject.layer != damageable.gameObject.layer) {
             damageable.TakeDamage(1);
             Destroy(gameObject);
