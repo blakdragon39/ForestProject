@@ -4,6 +4,7 @@ using UnityEngine;
 public class Damageable : MonoBehaviour {
 
     [SerializeField] private int maxHealth;
+    [SerializeField] private HealthBar healthBar;
 
     private Killable killable;
     private new SpriteRenderer renderer;
@@ -15,14 +16,19 @@ public class Damageable : MonoBehaviour {
         renderer = GetComponent<SpriteRenderer>();
         
         currentHealth = maxHealth;
+        
+        healthBar.Setup(maxHealth);
     }
 
     public void Revive() {
         currentHealth = maxHealth;
+        healthBar.Reset();
     }
 
     public void TakeDamage(int damage) {
         currentHealth -= damage;
+        healthBar.RemoveHealth(damage);
+        
         StartCoroutine(Blink());
         
         if (currentHealth <= 0) {
