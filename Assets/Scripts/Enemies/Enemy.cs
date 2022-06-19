@@ -15,19 +15,16 @@ public class Enemy : MonoBehaviour, Killable {
     [SerializeField] private Projectile projectile;
 
     private new Rigidbody2D rigidbody;
-    private Animator animator;
+    private Animator1D animator;
     private Transform target;
 
     private EnemyState currentState;
     private Vector3 patrolTarget;
     private float timeSinceLastAttack;
     
-    private readonly int directionHash = Animator.StringToHash("direction");
-    private readonly int isMovingHash = Animator.StringToHash("isMoving");
-
     private void Awake() {
         rigidbody = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        animator = GetComponent<Animator1D>();
         target = GameObject.FindWithTag("Player").transform;
 
         transform.position = patrolPosStart;
@@ -62,9 +59,9 @@ public class Enemy : MonoBehaviour, Killable {
     private void Move() {
         var newPos = Vector3.MoveTowards(transform.position, patrolTarget, moveSpeed * Time.deltaTime);
         var direction = patrolTarget.x - newPos.x;
-        
-        animator.SetFloat(directionHash, direction);
-        animator.SetBool(isMovingHash, patrolTarget != newPos);
+
+        animator.Direction = direction;
+        animator.IsMoving = patrolTarget != newPos;
         
         rigidbody.MovePosition(newPos);
     }

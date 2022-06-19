@@ -24,7 +24,7 @@ public class Projectile : MonoBehaviour {
         gameObject.layer = firingLayer;
         
         var fireDir = towards - from;
-        float rotDeg = Mathf.Atan2(fireDir.y * -1f, fireDir.x * -1f) * Mathf.Rad2Deg;
+        float rotDeg = Mathf.Atan2(fireDir.y, fireDir.x) * Mathf.Rad2Deg;
         var rotation = new Vector3(0, 0, rotDeg);
         
         rigidbody.velocity = fireDir.ToVector2().normalized * speed;

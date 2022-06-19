@@ -13,20 +13,17 @@ public class PlayerController : MonoBehaviour, Killable {
     [SerializeField] private float moveSpeed;
     
     private Rigidbody2D rigidBody;
-    private Animator animator;
+    private Animator1D animator;
     private Damageable damageable;
 
     private PlayerState currentState;
     private Vector2 input;
     private Vector2 walkDirection;
     private bool isWalking;
-
-    private readonly int directionHash = Animator.StringToHash("direction");
-    private readonly int isWalkingHash = Animator.StringToHash("isWalking");
     
     private void Awake() {
         rigidBody = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        animator = GetComponent<Animator1D>();
         damageable = GetComponent<Damageable>();
 
         currentState = PlayerState.PlayerControl;
@@ -58,8 +55,8 @@ public class PlayerController : MonoBehaviour, Killable {
     }
 
     private void UpdateAnimation() {
-        animator.SetFloat(directionHash, walkDirection.x);
-        animator.SetBool(isWalkingHash, isWalking);
+        animator.Direction = walkDirection.x;
+        animator.IsMoving = isWalking;
     }
 
     private void Move() {

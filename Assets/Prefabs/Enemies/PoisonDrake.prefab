@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2090736486128804400}
   - component: {fileID: 4622073070566539242}
   - component: {fileID: 5666628765610349863}
+  - component: {fileID: -440663496761796072}
   m_Layer: 7
   m_Name: PoisonDrake
   m_TagString: Untagged
@@ -96,7 +97,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5174211278631663052}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -186,6 +187,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9958725, y: 0.94014406}
   m_EdgeRadius: 0
+--- !u!114 &-440663496761796072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5174211278631663052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 817a04c900c6453fa43f9bc4fd6150ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  directionKey: direction
+  isMovingKey: isMoving
 --- !u!1001 &880709440423665436
 PrefabInstance:
   m_ObjectHideFlags: 0
