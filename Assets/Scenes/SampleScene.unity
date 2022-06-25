@@ -332,7 +332,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 64511695}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -4765,7 +4765,7 @@ GameObject:
   - component: {fileID: 923543684}
   - component: {fileID: 923543683}
   m_Layer: 5
-  m_Name: Dialog
+  m_Name: DialogBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20267,8 +20267,9 @@ GameObject:
   - component: {fileID: 1311523170}
   - component: {fileID: 1311523169}
   - component: {fileID: 1311523168}
+  - component: {fileID: 1311523171}
   m_Layer: 5
-  m_Name: UI
+  m_Name: DialogController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20355,6 +20356,21 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1311523171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311523166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab768c5c656449cba56acdf211333ab7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogBox: {fileID: 923543681}
+  textField: {fileID: 532661648}
+  lettersPerSecond: 20
 --- !u!4 &1314913408 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3687548763869314356, guid: fb411fdc1a7e83844aa2ec86884ad7c9, type: 3}

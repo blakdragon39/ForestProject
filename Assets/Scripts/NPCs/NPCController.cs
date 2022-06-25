@@ -27,6 +27,6 @@ public class NPCController : MonoBehaviour, Interactable {
     }
 
     public void Interact(Transform initiator) {
-        Debug.Log("Hello!");
+        DialogController.Instance.AddMessageToQueue("Hello! How are you?");
     }
 }
