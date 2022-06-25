@@ -1,10 +1,12 @@
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour {
-
+    
     [SerializeField] private Projectile projectile;
 
     private void Update() {
+        if (GameController.Instance.CurrentState != GameState.PlayerControl) return;
+        
         if (Input.GetButtonDown("Fire1")) {
             FireAttack();
         }

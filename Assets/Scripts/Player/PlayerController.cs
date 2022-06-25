@@ -2,21 +2,20 @@ using System.Collections;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 
-enum PlayerState {
-    PlayerControl,
-    ScriptControl,
-}
+
 
 public class PlayerController : MonoBehaviour, Killable {
 
     [SerializeField] private Vector3 spawnPos;
     [SerializeField] private float moveSpeed;
-    
+    [SerializeField] private Collider2D interactionLeft;
+    [SerializeField] private Collider2D interactionRight;
+
     private Rigidbody2D rigidBody;
     private Animator1D animator;
     private Damageable damageable;
+    private PlayerAttack playerAttack;
 
-    private PlayerState currentState;
     private Vector2 input;
     private Vector2 walkDirection;
     private bool isWalking;
@@ -25,20 +24,22 @@ public class PlayerController : MonoBehaviour, Killable {
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator1D>();
         damageable = GetComponent<Damageable>();
-
-        currentState = PlayerState.PlayerControl;
+        playerAttack = GetComponent<PlayerAttack>();
     }
 
     private void Update() {
-        if (currentState == PlayerState.PlayerControl) {
-            UpdateInput();    
+        if (GameController.Instance.CurrentState == GameState.PlayerControl) {
+            UpdateInput();
+            if (Input.GetButtonDown("Interact")) {
+                CheckInteraction();
+            }
         }
         
         UpdateAnimation();
     }
 
     private void FixedUpdate() {
-        if (currentState == PlayerState.PlayerControl) {
+        if (GameController.Instance.CurrentState == GameState.PlayerControl) {
             Move();
         }
     }
@@ -65,6 +66,17 @@ public class PlayerController : MonoBehaviour, Killable {
         }
     }
 
+    private void CheckInteraction() {
+        var interactionZone = animator.Direction < 0 ? interactionLeft : interactionRight;
+        var interactable = Physics2D.OverlapArea(
+            interactionZone.bounds.min, interactionZone.bounds.max, Layers.instance.InteractableLayer
+        );
+
+        if (interactable != null) {
+            interactable.GetComponent<Interactable>().Interact(transform);
+        }
+    }
+
     public void Die() {
         damageable.Revive();
         transform.position = spawnPos;
@@ -75,7 +87,7 @@ public class PlayerController : MonoBehaviour, Killable {
     }
 
     public IEnumerator WalkTo(Vector3 destination) {
-        currentState = PlayerState.ScriptControl;
+        GameController.Instance.CurrentState = GameState.ScriptControl;
         
         while (transform.position != destination) {
             walkDirection = destination - transform.position;
@@ -86,6 +98,6 @@ public class PlayerController : MonoBehaviour, Killable {
             yield return null;
         }
         
-        currentState = PlayerState.PlayerControl;
+        GameController.Instance.CurrentState = GameState.PlayerControl;
     }
 }

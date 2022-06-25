@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class NPCController : MonoBehaviour {
+public class NPCController : MonoBehaviour, Interactable {
 
     [SerializeField] private float moveSpeed;
     [SerializeField] private WanderRange wanderRange;
@@ -12,17 +12,21 @@ public class NPCController : MonoBehaviour {
     }
 
     private void FixedUpdate() {
+        // todo: Pushes player out of the way if there's collision 
         Move();
     }
 
     private void Move() {
         if (transform.position != wanderRange.WanderDestination) {
-            Debug.Log($"moving to {wanderRange.WanderDestination}");
             animator.Direction = (wanderRange.WanderDestination - transform.position).x;
             animator.IsMoving = true;
             transform.position = Vector3.MoveTowards(transform.position, wanderRange.WanderDestination, moveSpeed * Time.deltaTime);
         } else {
             animator.IsMoving = false;
         }
+    }
+
+    public void Interact(Transform initiator) {
+        Debug.Log("Hello!");
     }
 }

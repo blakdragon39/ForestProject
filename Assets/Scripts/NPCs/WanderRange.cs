@@ -23,7 +23,6 @@ public class WanderRange : MonoBehaviour {
         timeSinceLastWander += Time.deltaTime;
 
         if (timeSinceLastWander >= nextWanderTime) {
-            Debug.Log("choosing wander destination...");
             timeSinceLastWander = 0;
             WanderDestination = RandomPointInRange();
         }
