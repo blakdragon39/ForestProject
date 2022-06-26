@@ -12,8 +12,10 @@ public class NPCController : MonoBehaviour, Interactable {
     }
 
     private void FixedUpdate() {
-        // todo: Pushes player out of the way if there's collision 
-        Move();
+        if (GameController.Instance.CurrentState == GameState.PlayerControl) {
+            // todo: Pushes player out of the way if there's collision 
+            Move();
+        }
     }
 
     private void Move() {
@@ -28,5 +30,6 @@ public class NPCController : MonoBehaviour, Interactable {
 
     public void Interact(Transform initiator) {
         DialogController.Instance.AddMessageToQueue("Hello! How are you?");
+        DialogController.Instance.AddMessageToQueue("Alright, goodbye.");
     }
 }

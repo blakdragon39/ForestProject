@@ -12,12 +12,14 @@ public class DialogController : MonoBehaviour {
     [SerializeField] private int lettersPerSecond;
     
     private Queue<string> messages;
+    private bool typingMessage;
     private bool waitingForProceed;
     private bool proceed;
 
     private void Awake() {
         Instance = this;
         messages = new Queue<string>();
+        typingMessage = false;
         waitingForProceed = false;
         proceed = false;
         
@@ -34,7 +36,7 @@ public class DialogController : MonoBehaviour {
     }
 
     private void CheckStartDialog() {
-        if (!dialogBox.activeInHierarchy && messages.Count > 0) {
+        if (!typingMessage && messages.Count > 0) {
             GameController.Instance.CurrentState = GameState.Dialog;
             StartCoroutine(ShowMessage(messages.Dequeue()));
         }
@@ -51,6 +53,7 @@ public class DialogController : MonoBehaviour {
 
     private IEnumerator ShowMessage(string message) {
         dialogBox.SetActive(true);
+        typingMessage = true;
         textField.text = "";
         
         yield return TypeLine(message);
@@ -58,6 +61,7 @@ public class DialogController : MonoBehaviour {
         waitingForProceed = true;
         yield return new WaitUntil(() => proceed);
         proceed = false;
+        typingMessage = false;
 
         if (messages.Count == 0) {
             ExitDialog();
